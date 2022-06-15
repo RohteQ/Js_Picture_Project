@@ -13,6 +13,7 @@ const mask = (selector) =>  {
             range.moveStart('character', pos);
             range.select();
         }
+    
     };
 
 
@@ -31,6 +32,10 @@ const mask = (selector) =>  {
         this.value = matrix.replace(/./g, function(a) {
             return /[_\d]/.test(a) && i < val.length ? val.charAt(i++) : i >= val.length ? '' : a;
         });
+        if (this.value.charAt(1) != '7') {
+            this.value = '';
+            this.blur();
+        }
 
         if (event.type === 'blur') {
             if (this.value.length == 2) {
@@ -39,7 +44,9 @@ const mask = (selector) =>  {
         } else {
             setCursorPosition(this.value.length, this);
         }
+        
     }
+  
 
 
     let inputs = document.querySelectorAll(selector);
@@ -48,6 +55,7 @@ const mask = (selector) =>  {
         input.addEventListener('input', createMask);
         input.addEventListener('focus', createMask);
         input.addEventListener('focus', createMask);
+        
     });
 };
 

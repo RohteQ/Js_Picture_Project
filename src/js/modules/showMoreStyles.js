@@ -15,13 +15,19 @@ const showMoreStyles = (trigger, wrapper) => {
     //     });
     //     btn.remove();
     // });
-    
+  function status() {
+    let statusMessage = document.createElement('div');
+    statusMessage.classList.add('status');
+    statusMessage.textContent = 'Something goes wrong...';
+    statusMessage.style.cssText = 'text-align: center; font-size: 250%; color: red;';
+    document.querySelector(wrapper).appendChild(statusMessage);
+  }
 
     btn.addEventListener('click', function() {
-        getResource('assets/db.json')
+        getResource('assets/db.jsn')
         //massive to func createCards
             .then(res => createCards(res.styles))
-            .catch(error => console.log(error));
+            .catch(status());
 
         this.remove();
     });

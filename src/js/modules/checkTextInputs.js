@@ -9,6 +9,11 @@ const checkTextInputs = (selector) => {
                 event.preventDefault();
             }
         });
+        input.addEventListener('input', () => {
+			if (input.value.match(/[a-z]/ig)) {
+				input.value = '';
+			}
+        });
     });
 
 };
