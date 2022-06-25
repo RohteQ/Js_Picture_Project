@@ -6,6 +6,8 @@ const sliders = (slides, dir, prev, next) => {
     const items = document.querySelectorAll(slides);
         
 
+
+
     function showSlides(n) {
         if (n > items.length) {
             slideIndex = 1;
@@ -19,9 +21,11 @@ const sliders = (slides, dir, prev, next) => {
             item.classList.add('animated');
             item.style.display = 'none';
         });
+     
 
         items[slideIndex - 1].style.display = 'block';
     }
+    
     showSlides(slideIndex);
 
     function changeSlides(n) {
@@ -40,7 +44,7 @@ const sliders = (slides, dir, prev, next) => {
         nextBtn.addEventListener('click', () => {
             changeSlides(1);
             items[slideIndex - 1].classList.remove('slideInRight');
-            items[slideIndex - 1].classList.add('slideInLeft');
+            items[slideIndex - 1].classList.add('slideInLeft'); 
         });
     } catch(e) {}
 

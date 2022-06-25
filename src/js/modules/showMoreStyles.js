@@ -24,11 +24,12 @@ const showMoreStyles = (trigger, wrapper) => {
   }
 
     btn.addEventListener('click', function() {
-        getResource('assets/db.jsn')
+        getResource('assets/db.json')
         //massive to func createCards
             .then(res => createCards(res.styles))
-            .catch(status());
-
+            .catch(() => {
+              status();
+            });
         this.remove();
     });
 
