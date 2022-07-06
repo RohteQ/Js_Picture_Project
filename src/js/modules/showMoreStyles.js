@@ -33,7 +33,6 @@ const showMoreStyles = (trigger, wrapper) => {
         this.remove();
     });
 
-
     function createCards(respons) {
         respons.forEach(({src, title, link}) => {
             let card = document.createElement('div');
