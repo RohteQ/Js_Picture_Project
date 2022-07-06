@@ -7,7 +7,7 @@ const filter = () => {
 
         //markType= collection of elements
     const typeFilter = (markType) => {
-        markAll.forEach(mark => {
+        markAll.forEach((mark) => {
             mark.style.display = 'none';
             mark.classList.remove('animated', 'fadeIn');
         });
@@ -16,12 +16,12 @@ const filter = () => {
         no.classList.remove('animated', 'fadeIn');
 
         if (markType) {
-            markType.forEach(mark => {
+            markType.forEach((mark) => {
                 mark.style.display = 'block';
                 mark.classList.add('animated', 'fadeIn');
             });
         }
-        else if(markType.length == 0) {
+         if(markType.length == 0) {
             no.style.display = 'block';
             no.classList.add('animated', 'fadeIn');
         }
@@ -39,7 +39,7 @@ const filter = () => {
         if (target && target.tagName == "LI") {
             items.forEach(btn => btn.classList.remove('active'));
             target.classList.add('active');
-        }
+        } 
     });
 };
 

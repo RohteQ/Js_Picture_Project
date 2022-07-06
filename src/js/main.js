@@ -26,5 +26,5 @@ window.addEventListener('DOMContentLoaded', () => {
     clearObject(modalState);
     filter();
     pictureSize('.sizes-block');
-    accordion('.accordion-heading', '.accordion-block');
+    accordion('.accordion-heading');
 });

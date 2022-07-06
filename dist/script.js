@@ -9,25 +9,49 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-const accordion = (triggersSelector, itemsSelector) => {
+const accordion = triggersSelector => {
   //2 options -css or next sibling  
-  const btns = document.querySelectorAll(triggersSelector),
-        blocks = document.querySelectorAll(itemsSelector); // 1st option
-
-  blocks.forEach(block => {
-    block.classList.add('animated', 'fadeInDown');
-  });
+  // // 2d option next sibling  
+  const btns = document.querySelectorAll(triggersSelector);
   btns.forEach(btn => {
-    btn.addEventListener('click', function (e) {
-      //this - triggered element
-      if (!this.classList.contains('active')) {
-        btns.forEach(btn => {
-          btn.classList.remove('active', 'active-style');
-        });
-        this.classList.add('active', 'active-style');
+    btn.addEventListener('click', function () {
+      hideBlock();
+      this.classList.toggle('active-style'); //active class not on heading, we put it on content
+
+      this.nextElementSibling.classList.toggle('active-content');
+
+      if (this.classList.contains('active-style')) {
+        //when setting the height value to the value that the element should occupy + paddings in pixels => the element expands
+        this.nextElementSibling.style.maxHeight = this.nextElementSibling.scrollHeight + 80 + 'px';
+      } else {
+        this.nextElementSibling.style.maxHeight = '0px';
       }
     });
   });
+
+  function hideBlock() {
+    btns.forEach(btn => {
+      const nextElem = btn.nextElementSibling;
+      btn.classList.remove('active-style');
+      nextElem.classList.remove('active-content');
+      nextElem.style.maxHeight = '0px';
+    });
+  } //     blocks = document.querySelectorAll(itemsSelector);
+  // blocks.forEach(block => {
+  //     block.classList.add('animated', 'fadeInDown');
+  // });
+  // btns.forEach(btn => {
+  //     btn.addEventListener('click', function(){
+  //         //this - triggered element
+  //         if (!this.classList.contains('active')) {
+  //             btns.forEach(btn => {
+  //                 btn.classList.remove('active', 'active-style');
+  //             });
+  //             this.classList.add('active', 'active-style');
+  //         }
+  //     });
+  // });
+
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (accordion);
@@ -189,7 +213,9 @@ const filter = () => {
         mark.style.display = 'block';
         mark.classList.add('animated', 'fadeIn');
       });
-    } else if (markType.length == 0) {
+    }
+
+    if (markType.length == 0) {
       no.style.display = 'block';
       no.classList.add('animated', 'fadeIn');
     }
@@ -3083,7 +3109,7 @@ window.addEventListener('DOMContentLoaded', () => {
   (0,_modules_clearObjects__WEBPACK_IMPORTED_MODULE_7__["default"])(modalState);
   (0,_modules_filter__WEBPACK_IMPORTED_MODULE_8__["default"])();
   (0,_modules_pictureSize__WEBPACK_IMPORTED_MODULE_9__["default"])('.sizes-block');
-  (0,_modules_accordion__WEBPACK_IMPORTED_MODULE_10__["default"])('.accordion-heading', '.accordion-block');
+  (0,_modules_accordion__WEBPACK_IMPORTED_MODULE_10__["default"])('.accordion-heading');
 });
 }();
 /******/ })()
