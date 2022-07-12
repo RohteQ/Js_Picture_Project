@@ -209,7 +209,9 @@ h4 {
   background-color: #f7e7e6;
   padding-top: 3rem;
   /* Making it beautiful */
-
+}
+.main .main-slider {
+  overflow: hidden;
 }
 .main .file_upload {
   position: relative;

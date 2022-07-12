@@ -924,13 +924,17 @@ const sliders = (slides, dir, prev, next) => {
           nextBtn = document.querySelector(next);
     prevBtn.addEventListener('click', () => {
       changeSlides(-1);
-      items[slideIndex - 1].classList.remove('slideInLeft');
       items[slideIndex - 1].classList.add('slideInRight');
+      items[slideIndex - 1].addEventListener('animationend', () => {
+        items[slideIndex - 1].classList.remove('slideInRight');
+      });
     });
     nextBtn.addEventListener('click', () => {
       changeSlides(1);
-      items[slideIndex - 1].classList.remove('slideInRight');
       items[slideIndex - 1].classList.add('slideInLeft');
+      items[slideIndex - 1].addEventListener('animationend', () => {
+        items[slideIndex - 1].classList.remove('slideInLeft');
+      });
     });
   } catch (e) {} //paused receive uid of setInterval(choosing interval u need)
 
@@ -940,12 +944,18 @@ const sliders = (slides, dir, prev, next) => {
       paused = setInterval(function () {
         changeSlides(1);
         items[slideIndex - 1].classList.add('slideInDown');
+        items[slideIndex - 1].addEventListener('animationend', () => {
+          items[slideIndex - 1].classList.remove('slideInDown');
+        });
       }, 3000);
     } else {
       paused = setInterval(function () {
         changeSlides(1);
         items[slideIndex - 1].classList.remove('slideInLeft');
         items[slideIndex - 1].classList.add('slideInRight');
+        items[slideIndex - 1].addEventListener('animationend', () => {
+          items[slideIndex - 1].classList.remove('slideInRight');
+        });
       }, 3000);
     }
   }
